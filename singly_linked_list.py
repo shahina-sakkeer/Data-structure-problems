@@ -146,26 +146,34 @@ class LinkedList:
         slow=self.head
         fast=self.head
 
-        while fast.ref is not None and fast.ref.ref is not None:
+        while fast is not None and fast.ref is not None:
             slow=slow.ref
             fast=fast.ref.ref
 
         return slow.data
     
     
+    
     def remove_middle_element(self):
-        if self.head is None or self.head.ref is None:
-            print("List is empty")
+        if self.head is None:
+            print("Not able to remove element")
             return
         
+        if self.head.ref is None:
+            self.head=None
+            return
+
+        previous=None
         slow=self.head
         fast=self.head
 
-        while fast.ref is not None and fast.ref.ref is not None:
+        while fast is not None and fast.ref is not None:   #why this condition because in 2 element node, fast.ref and fast.ref.ref will cause bug
+            previous=slow
             slow=slow.ref
             fast=fast.ref.ref
 
-        slow.ref=slow.ref.ref
+        previous.ref=slow.ref
+
         
 
     def search_value(self,x):

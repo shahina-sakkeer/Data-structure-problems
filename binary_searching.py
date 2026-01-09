@@ -66,7 +66,7 @@
 #         else:
 #             high=mid-1
 
-#     return -1
+#     return
 
 # n=int(input("enter the length of the list"))
 # print("enter the elements in asc order")
@@ -76,11 +76,10 @@
 # print("sorted array is ",arr)
 # index=binary_search(new,key)
 
-# if index != -1:
+# if index is not None:
 #     print("Key found at sorted list at index ",index)
 # else:
 #     print("key doesnot found")
-
 
 
 
@@ -88,7 +87,7 @@
 # def duplicate_binary_target(lst,value):
 #     low=0
 #     high=len(lst)-1
-#     result=-1
+#     result=None
 
 #     while low <= high:
 #         mid=(low+high) // 2
@@ -173,6 +172,110 @@
 
 
 
+#RECURSION USING BINARY SEARCH
+# def recursive_search(lst,low,high,key):
+#     low=0
+#     high=len(lst)-1
 
+#     if low>high:
+#         return -1
+    
+#     mid=(low+high) //2
+    
+#     if key==lst[mid]:
+#         return mid
+      
+#     if key>lst[mid]:
+#         return recursive_search(lst,mid+1,high,key)
+    
+#     if key<lst[mid]:
+#         return recursive_search(lst,low,mid-1,key)
+    
+# lst=list(map(int,input("enter a list : ").split(" ")))
+# target=int(input("enter the target "))
+# lst.sort()
+# print("sorted list is : ",lst)
+# print(recursive_search(lst,0,len(lst)-1,target))
+
+
+
+#RECURSION USING BINARY SEARCH(another method)
+# def recursion_search(lst,key,low,high):
+
+#     while low<=high:
+#         mid=(low+high)//2
+
+#         if key==lst[mid]:
+#             return mid
+        
+#         elif key>lst[mid]:
+#             return recursion_search(lst,key,mid+1,high)
+        
+#         else:
+#             return recursion_search(lst,key,low,mid-1)
+        
+#     return
+        
+# lst=[10,10,20,30,40,50]
+# key=int(input("enter the target : "))
+# idx=recursion_search(lst,key,0,len(lst)-1)
+# if idx is not None:
+#     print("element found at ", idx)
+# else:
+#     print("target not found ")
+
+
+
+#REPLACE TARGET ELEMENT BY A VALUE(one method)
+# def binary(lst,target,value):
+#     low=0
+#     high=len(lst)-1
+#     res=None
+    
+#     while low<=high:
+#         mid=(low+high)//2
+
+#         if target==lst[mid]:
+#             res=mid
+#             break
+        
+#         elif target>lst[mid]:
+#             low=mid+1
+        
+#         else:
+#             high=mid-1
+            
+#     if res is not None:
+#         lst.pop(mid)
+#         lst.insert(mid,value)
+#         return lst
+#     else:
+#         return lst
+
+# lst=[12,13,14,15,17,20]
+# target=int(input("enter the target : "))
+# value=int(input("enter the values : "))
+# print(binary(lst,target,value))
+
+
+
+#REPLACE TARGET ELEMENT BY A VALUE(another method)
+# def binary(lst, target, value):
+#     low = 0
+#     high = len(lst) - 1
+
+#     while low <= high:
+#         mid = (low + high) // 2
+
+#         if target == lst[mid]:
+#             lst[mid] = value   # direct replace
+#             return lst
+
+#         elif target > lst[mid]:
+#             low = mid + 1
+#         else:
+#             high = mid - 1
+
+#     return lst
 
 
