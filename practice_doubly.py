@@ -211,15 +211,15 @@ class DoubleLinkedlist:
         slow.nref.pref=slow.pref
 
 
-    def remove_dupli_sorted(self):
+    def remove_dupli_sorted(self):   
         if self.head is None:
             print("no eleements are present in the dll")
             return
         
         n=self.head
 
-        while n.nref is not None:
-            if n.data==n.nref.data:
+        while n.nref is not None:    #inside part is not correct
+            if n.data==n.nref.data: 
                 n.nref.nref.pref=n.nref
                 n.nref=n.nref.nref
                 
