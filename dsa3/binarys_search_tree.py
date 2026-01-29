@@ -194,6 +194,28 @@ class Node:
 
         inorder_travel(self)
         return self.ans
+    
+
+    def closest_search(self,target,closest=None):
+        if closest is None:
+            closest=self.data
+
+        if abs(self.data-target) < abs(closest-target):
+            closest=self.data
+
+        if target<self.data:
+            if self.left is None:
+                return
+            else:
+                self.left.closest_search(target,closest)
+
+        if target>self.data:
+            if self.right is None:
+                return
+            else:
+                self.right.closest_search(target,closest)
+
+        return self.data
 
 
 
@@ -222,3 +244,5 @@ root.insert(21)
 
 # print(root.kth_largest(3))
 # print(root.kth_smallest(3))
+
+print(root.closest_search(14))

@@ -56,14 +56,19 @@ class Trie:
 
 
     def display(self):
-        def dfs(node, word):
+        stack=[]
+        
+        stack.append((self.root,""))
+        
+        while stack:
+            node,word=stack.pop()
+            
             if node.end:
                 print(word)
-            for ch in node.children:
-                dfs(node.children[ch], word + ch)
-
-        dfs(self.root, "")
-
+                
+            for ch,child in node.children.items():           #child is the value, ch is the key
+                stack.append((child,word+ch))               #word+ch if we write like this only, words will get printed
+        
 
 trie=Trie()
 trie.insert("app")

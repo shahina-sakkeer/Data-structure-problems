@@ -36,7 +36,7 @@ class BinaryTree:
                 q.append(current.right)
 
 
-    def inorder_traversal(self,node):      # self → the tree object (tree)   node → the current node we are visiting
+    def inorder_traversal(self,node):      # self → the tree object (tree)   node → the current node we are visiting. firstly the node will be root
         if node:
             self.inorder_traversal(node.left)       #go to left by pausing the current node.left. if that node.left also have left, pause the current node.left and call the next node.left. whenever the node.left becomes none, it will come from back to front
             print(node.data,end=" ")
@@ -58,11 +58,15 @@ class BinaryTree:
 
 
     def tree_height(self,node):
-        if node is None:
-            return 0          #if current node becomes none, return 0. this is the base condition.
-        
-        return 1+max(self.tree_height(node.left),              #
-                     self.tree_height(node.right))
+        left_height=right_height=0
+
+        if node.left is not None:
+            left_height=self.tree_height(node.left)
+
+        if node.right is not None:
+            right_height=self.tree_height(node.right)
+
+        return 1+max(left_height,right_height)
 
 
 tree=BinaryTree()     
@@ -71,6 +75,9 @@ tree.insert(13)
 tree.insert(5)
 tree.insert(23)
 tree.insert(8)
+tree.insert(11)
+tree.insert(12)
+tree.insert(1)
 
 
 # tree.inorder_traversal(tree.root)       #we have to pass the root because the function should need to know from where to start
@@ -94,6 +101,17 @@ print(tree.tree_height(tree.root))
 #     return check_equal(p.left,q.left) and check_equal(p.right,q.right)    #it is checking like left subtree of p and left subtree of q. as well as right subtree of p and right subtree of q
 #             #by passing p.left and q.left recusrsively, it means check_equal(p.left,q.left). p will become p.left and q becomes q.left
 
+# lst1 = [10, 13, 23, 8, 5]          #make sure this part works or not
+# lst2 = [10, 13, 23, 8, 5]
+
+# t1 = BST()
+# t2 = BST()
+
+# for x in lst1:
+#     t1.insert(x)
+
+# for x in lst2:
+#     t2.insert(x)
 
 
     
